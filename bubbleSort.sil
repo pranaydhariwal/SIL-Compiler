@@ -1,0 +1,34 @@
+DECL
+	int a[10];
+	int i;
+	int j;
+	int c;
+	bool x,y,z;
+ENDDECL
+BEGIN
+	i = 0;
+	while (i < 10) do
+		read(a[i]);
+		i = i + 1;
+	endwhile;
+	i = 0;
+
+	while (i < 10) do
+		j = 0;
+		while (j < 10) do
+			if (a[i] < a[j]) then
+				c = a[i];
+				a[i] = a[j];
+				a[j] = c;
+			endif;
+			j = j + 1;
+		endwhile;
+		i = i + 1;
+	endwhile;
+	write(10000);
+	i = 0;
+	while (i < 10) do
+		write(a[i]);
+		i = i + 1;
+	endwhile;
+END

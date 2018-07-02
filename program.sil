@@ -1,0 +1,82 @@
+type
+    list {
+        integer x;
+        list next;
+    }
+endtype
+
+decl
+  integer a[10], b, i, p;
+  integer add1(integer &a, &c);
+  integer support(integer &a, &b);
+enddecl
+
+// Arrays in structures
+// Return type as structures
+// Default declarations for structures as NULL
+
+integer support(integer &a, &b){
+  begin
+    return (a+b);
+  end
+}
+
+integer Reverse(List &H){
+	decl
+		List temp1,temp2;
+	enddecl
+	begin
+		if(H!=NULL AND H.next!=NULL) then
+			temp1=H.next;
+			temp2=H.next;
+			H.next=NULL;
+			in=Reverse(temp1);
+			temp2.next=H;
+			H=temp1;
+		endif;
+		return 1;
+	end
+}
+
+integer Reverse(List H){
+	decl
+		List temp1,temp2, temp3;
+	enddecl
+	begin
+		temp1 = NULL;
+		temp2 = H;
+		while(temp2!=NULL) do
+			temp3 = temp2.next;
+			temp2.next=temp1;
+			temp1 = temp2;
+			temp2 = temp3;
+		endwhile;
+		newList = temp1;
+		return 1;
+	end
+}
+
+integer add1(integer &a, &c){
+  decl
+    integer b;
+  enddecl
+  begin
+    b = support(a, c);
+    return b;
+  end
+}
+
+integer main(){
+  decl
+    integer c;
+    integer e;
+  enddecl
+  begin
+    i = 0;
+    read(c);
+    read(e);
+    b = add1(c, e);
+    write(b);
+    return 0;
+  end
+}
